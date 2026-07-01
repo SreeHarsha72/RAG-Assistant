@@ -19,13 +19,13 @@ This project demonstrates a complete RAG implementation which includes:
 
 
 ## Tech Stack
+- **Knowledge Sources:** SQL, CSV, TXT, Markdown
+- **Programming:** Python, Pandas
+- **UI:** Streamlit
+- **LLM:**  Llama 3 through Ollama
+- **Embeddings:** Sentence Transformers
+- **Vector Database:** ChromaDB
 
-**Programming:** Python, Pandas
-**UI:** Streamlit
-**LLM:**  Llama 3 through Ollama
-**Embeddings:** Sentence Transformers
-**Vector Database:** ChromaDB
-**Knowledge Sources:** SQL, CSV, TXT, Markdown |
 
 
 ## Project Architecture
