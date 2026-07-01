@@ -65,38 +65,14 @@ Final Answer + Source Chunks + Similarity Scores
 
 ### 1. Document Ingestion
 
-The project reads files from the `data/` folder. The knowledge base includes multiple types of internal data-team documents:
+The project reads files from the `data/` folder. The knowledge base includes multiple types of internal data-team documents (.txt, .md, .sql, .csv). Each file is loaded, cleaned, and converted into text that can be used by the RAG pipeline.
 
-```text
-data/
-├── dbt_models/
-├── sql_queries/
-├── data_dictionaries/
-├── pipeline_logs/
-└── docs/
-```
-
-Supported file types:
-
-```text
-.txt
-.md
-.sql
-.csv
-```
-
-Each file is loaded, cleaned, and converted into text that can be used by the RAG pipeline.
-
----
 
 ### 2. Chunking
 
-Large documents are split into smaller overlapping chunks.
-
-Chunking helps the retriever find focused and relevant context instead of sending an entire document to the model.
+Large documents are split into smaller overlapping chunks. Chunking helps the retriever find focused and relevant context instead of sending an entire document to the model.
 
 Default chunk settings:
-
 ```text
 CHUNK_SIZE = 800
 CHUNK_OVERLAP = 150
@@ -104,28 +80,24 @@ CHUNK_OVERLAP = 150
 
 The overlap helps preserve context between neighboring chunks.
 
----
 
 ### 3. Embedding Generation
 
 Each chunk is converted into a numerical vector using Sentence Transformers.
 
 Default embedding model:
-
 ```text
 sentence-transformers/all-MiniLM-L6-v2
 ```
 
 These embeddings allow the system to compare the meaning of a user question with the meaning of each document chunk.
 
----
 
 ### 4. Vector Storage with ChromaDB
 
 The chunk embeddings and metadata are stored in ChromaDB.
 
 Each stored chunk contains metadata such as:
-
 - source file,
 - source path,
 - document type,
@@ -133,89 +105,55 @@ Each stored chunk contains metadata such as:
 
 The `chroma_db/` folder is generated locally after indexing and should not be pushed to GitHub.
 
----
 
 ### 5. User Question Embedding
 
-When the user asks a question in the Streamlit UI, the question is also converted into an embedding using the same embedding model.
+When the user asks a question in the Streamlit UI, the question is also converted into an embedding using the same embedding model. The system then searches ChromaDB to find the most semantically similar chunks.
 
-The system then searches ChromaDB to find the most semantically similar chunks.
-
----
 
 ### 6. Top-K Retrieval
 
-The app retrieves the top matching chunks from ChromaDB.
-
-The user can control the number of chunks from the sidebar using:
+The app retrieves the top matching chunks from ChromaDB. The user can control the number of chunks from the sidebar using:
 
 ```text
 Top-K chunks to retrieve
 ```
 
-Default value:
-
-```text
-DEFAULT_TOP_K = 5
-```
-
 A higher Top-K gives the LLM more context, but it can also introduce noise. A lower Top-K keeps the context focused, but it may miss supporting details.
 
----
 
 ### 7. No-Answer Threshold
 
 The app uses a distance threshold to reduce hallucination.
 
 In ChromaDB retrieval:
-
 ```text
 Lower distance = better match
 Higher distance = weaker match
 ```
 
 If the best retrieved chunk is above the allowed threshold, the app refuses to answer and returns a safe response instead of making up information.
-
-Default threshold:
-
-```text
-MAX_ACCEPTABLE_DISTANCE = 1.25
-```
-
 This makes the project stronger because it shows that the RAG system does not blindly answer every question.
 
----
+### 8. Response Construction
 
-### 8. Prompt Construction
-
-After retrieval, the app builds a prompt using:
-
+After retrieval, the app builds a response prompt using:
 - the user question,
 - the retrieved source chunks,
 - instructions to answer only from the provided context.
 
 This step grounds the LLM response in the retrieved internal documents.
 
----
 
 ### 9. Local LLM Generation with Ollama and Llama 3
 
-The final prompt is sent to a local Llama 3 model through Ollama.
-
-Default model:
-
-```text
-llama3
-```
-
+The final prompt is sent to a local Llama3 model through Ollama.
 This keeps the project local and avoids sending internal data to an external API.
 
----
 
 ### 10. Source-Grounded Output
 
 After generation, the app displays:
-
 - the final business answer,
 - retrieved source files,
 - document type,
@@ -226,31 +164,13 @@ After generation, the app displays:
 
 This makes the answer explainable and traceable.
 
----
+
 
 ## Streamlit UI
 
-The UI is intentionally simple and focused.
+image
 
-Main user-facing text:
-
-```text
-Ask natural-language questions about internal data assets and get source-grounded answers
-```
-
-The sidebar includes:
-
-- Ollama model name,
-- Top-K chunks slider,
-- no-answer distance threshold slider,
-- Re-index Knowledge Base button.
-
-After a question is submitted, the app shows:
-
-- business answer,
-- sources and retrieval confidence,
-- retrieved source chunks.
-
+output images
 ---
 
 ## Key Features
