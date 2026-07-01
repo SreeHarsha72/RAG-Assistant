@@ -17,19 +17,6 @@ This project demonstrates a complete RAG implementation which includes:
 - generate an answer using Llama 3,
 - show the exact source chunks used for the answer.
 
-
-## Tech Stack
-- **Knowledge Sources:** SQL, CSV, TXT, Markdown
-- **Programming:** Python, Pandas
-- **UI:** Streamlit
-- **LLM:**  Llama 3 through Ollama
-- **Embeddings:** Sentence Transformers
-- **Vector Database:** ChromaDB
-
-
-
-## Project Architecture
-
 Document Loading
         ↓
 Chunking with Overlap
@@ -53,6 +40,13 @@ Ollama + Llama 3 Answer Generation
    Final Answer 
 
 
+## Tech Stack
+- **Knowledge Sources:** SQL, CSV, TXT, Markdown
+- **Programming:** Python, Pandas
+- **UI:** Streamlit
+- **LLM:**  Llama 3 through Ollama
+- **Embeddings:** Sentence Transformers
+- **Vector Database:** ChromaDB
 
 
 ## RAG Workflow
@@ -60,7 +54,6 @@ Ollama + Llama 3 Answer Generation
 ### 1. Document Ingestion
 
 The project reads files from the `data/` folder. The knowledge base includes multiple types of internal data-team documents (.txt, .md, .sql, .csv). Each file is loaded, cleaned, and converted into text that can be used by the RAG pipeline.
-
 
 ### 2. Chunking
 
