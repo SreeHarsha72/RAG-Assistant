@@ -30,13 +30,7 @@ This project demonstrates a complete RAG implementation which includes:
 
 ## Project Architecture
 
-
-Raw Internal Documents
-(dbt models, SQL files, CSV dictionaries, logs, docs)
-        ↓
-Document Loader
-        ↓
-Text Cleaning and Preprocessing
+Document Loading
         ↓
 Chunking with Overlap
         ↓
@@ -56,7 +50,7 @@ Prompt Construction with Retrieved Context
         ↓
 Ollama + Llama 3 Answer Generation
         ↓
-Final Answer + Source Chunks + Similarity Scores
+   Final Answer 
 
 
 
