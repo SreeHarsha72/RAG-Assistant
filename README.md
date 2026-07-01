@@ -4,56 +4,29 @@ I built this project as a practical Retrieval-Augmented Generation (RAG) assista
 
 ## Background
 
-In many data teams, important business and technical knowledge is scattered across SQL files, dbt models, logs, dashboards, documentation, and data dictionaries. Analysts and engineers often spend time searching across multiple places to understand metric definitions, pipeline failures, model dependencies, or business logic. This project solves that problem by building a local RAG assistant that can:
+In many data teams, important business and technical knowledge is scattered across SQL files, dbt models, logs, dashboards, documentation, and data dictionaries. Analysts and engineers often spend time searching across multiple places to understand metric definitions, pipeline failures, model dependencies, or business logic. This project solves that problem by building a local RAG assistant that provides quick answers from internal knowledge assets.
 
 ## Project Demonstrates
 
-This project demonstrates a complete RAG implementation, including:
+This project demonstrates a complete RAG implementation which includes:
+- ingest internal data documents,
+- split them into searchable chunks,
+- convert chunks into embeddings,
+- store them in a vector database,
+- retrieve the most relevant context for a user question,
+- generate an answer using Llama 3,
+- show the exact source chunks used for the answer.
 
-- document ingestion from multiple file types,
-- text cleaning and preprocessing,
-- chunking with overlap,
-- embedding generation using Sentence Transformers,
-- vector storage using ChromaDB,
-- semantic search and Top-K retrieval,
-- retrieval distance and similarity scoring,
-- no-answer thresholding to reduce hallucination,
-- prompt construction using retrieved context,
-- local answer generation using Ollama and Llama 3,
-- source-grounded answers with retrieved chunks,
-- Streamlit UI for business users,
-- knowledge-base re-indexing from the UI.
-
----
-
-## Business Use Case
-
-This assistant is designed for a data or analytics engineering team that needs quick answers from internal knowledge assets.
-
-Example use cases:
-
-- understanding how a business metric is calculated,
-- checking where a column or field is defined,
-- identifying why a pipeline failed,
-- finding which model or dashboard depends on a failed pipeline,
-- reviewing SOPs for pipeline troubleshooting,
-- helping new analysts understand data assets faster.
-
----
 
 ## Tech Stack
 
-| Area | Tools Used |
-|---|---|
-| Programming | Python |
-| UI | Streamlit |
-| LLM | Llama 3 through Ollama |
-| Embeddings | Sentence Transformers |
-| Vector Database | ChromaDB |
-| Data Handling | Pandas |
-| Knowledge Sources | SQL, CSV, TXT, Markdown |
+**Programming:** Python, Pandas
+**UI:** Streamlit
+**LLM:**  Llama 3 through Ollama
+**Embeddings:** Sentence Transformers
+**Vector Database:** ChromaDB
+**Knowledge Sources:** SQL, CSV, TXT, Markdown |
 
----
 
 ## Project Architecture
 
