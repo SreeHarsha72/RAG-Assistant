@@ -17,13 +17,14 @@ This project demonstrates a complete RAG implementation which includes:
 - generate an answer using Llama 3,
 - show the exact source chunks used for the answer.
 
+```text
 Document Loading
         ↓
 Chunking with Overlap
         ↓
-Sentence Transformer Embeddings
+Embeddings with Sentence Transformer 
         ↓
-ChromaDB Vector Store
+Vector Store in ChromaDB 
         ↓
 User Question from Streamlit UI
         ↓
@@ -37,8 +38,8 @@ Prompt Construction with Retrieved Context
         ↓
 Ollama + Llama 3 Answer Generation
         ↓
-   Final Answer 
-
+   Final Response 
+```
 
 ## Tech Stack
 - **Knowledge Sources:** SQL, CSV, TXT, Markdown
