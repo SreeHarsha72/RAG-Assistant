@@ -29,11 +29,11 @@ This project demonstrates a complete RAG implementation which includes:
 
 
 ## User Interface
-<img width="1917" height="520" alt="image" src="img/UI" />
+<img width="1917" height="520" alt="image" src="img/UI.jpg" />
 
 **Response to question in context**
-<img width="1917" height="520" alt="image" src="img/response" />
-<img width="1917" height="520" alt="image" src="img/response_contd" />
+<img width="1917" height="520" alt="image" src="img/response.jpg" />
+<img width="1917" height="520" alt="image" src="img/response_contd.jpg" />
 
 **Response to question out of context**
 <img width="1917" height="520" alt="image" src="img/response2" />
