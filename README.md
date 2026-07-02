@@ -1,6 +1,6 @@
 # Internal Data Knowledge RAG Assistant
 
-I built this project as a practical Retrieval-Augmented Generation (RAG) assistant for internal data teams. Unlike a generic chatbot, this project focuses on real data knowledge sources such as dbt models, SQL queries, data dictionaries, pipeline logs, metric definitions, SOPs, and internal documentation which allows a user to ask natural-language questions about internal data assets and get source-grounded answers using a local LLM through Ollama + Llama 3.
+I built this project as a practical Retrieval-Augmented Generation (RAG) assistant for teams. Unlike a generic chatbot, this project focuses on real data knowledge sources such as dbt models, SQL queries, data dictionaries, pipeline logs, metric definitions, SOPs, and internal documentation which allows a user to ask natural-language questions about internal data assets and get source-grounded answers using a local LLM through Ollama + Llama 3.
 
 ## Background
 
