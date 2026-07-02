@@ -45,7 +45,7 @@ This project demonstrates a complete RAG implementation which includes:
 
 ### 1. Document Ingestion
 
-The project reads files from the `data/` folder. The knowledge base includes multiple types of internal data-team documents (.txt, .md, .sql, .csv). Each file is loaded, cleaned, and converted into text that can be used by the RAG pipeline.
+The project reads files from the data/ folder. The knowledge base includes multiple types of internal data-team documents (.txt, .md, .sql, .csv). Each file is loaded, cleaned, and converted into text that can be used by the RAG pipeline.
 
 ### 2. Chunking
 
@@ -62,7 +62,7 @@ Each chunk is converted into a numerical vector using Sentence Transformers. The
 
 ### 4. Vector Storage with ChromaDB
 
-The chunk embeddings and metadata are stored in ChromaDB. The `chroma_db/` folder is generated locally after indexing.
+The chunk embeddings and metadata are stored in ChromaDB. The chroma_db/ folder is generated locally after indexing.
 
 Each stored chunk contains metadata such as:
 - source file,
