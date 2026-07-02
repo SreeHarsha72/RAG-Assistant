@@ -28,6 +28,16 @@ This project demonstrates a complete RAG implementation which includes:
 - **Vector Database:** ChromaDB
 
 
+## User Interface
+<img width="1917" height="520" alt="image" src="img/UI" />
+
+**Response to question in context**
+<img width="1917" height="520" alt="image" src="img/response" />
+<img width="1917" height="520" alt="image" src="img/response_contd" />
+
+**Response to question out of context**
+<img width="1917" height="520" alt="image" src="img/response2" />
+
 ## RAG Workflow Steps
 
 ### 1. Document Ingestion
@@ -104,11 +114,5 @@ This makes the answer explainable and traceable.
 
 Users can rebuild the vector database from the Streamlit UI when documents change.
 
-## Streamlit UI
-<img width="1917" height="520" alt="image" src="https://github.com/user-attachments/assets/ddb33a42-0c01-4ce8-8023-7e48c68e2b1d" />
-
-image
-
-output images
 
 
