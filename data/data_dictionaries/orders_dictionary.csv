@@ -1,0 +1,8 @@
+table_name,column_name,definition,owner
+fct_orders,order_id,Unique identifier for each customer order,Analytics Engineering
+fct_orders,customer_id,Unique identifier for the customer who placed the order,Analytics Engineering
+fct_orders,order_status,Current state of the order such as completed cancelled or pending,Analytics Engineering
+fct_orders,gross_revenue,Total order value before discounts refunds or adjustments,Finance Analytics
+fct_orders,discount_amount,Promotional or coupon discount applied to the order,Finance Analytics
+fct_orders,refund_amount,Amount refunded back to the customer,Finance Analytics
+fct_orders,net_revenue,Gross revenue minus discount amount and refund amount,Finance Analytics

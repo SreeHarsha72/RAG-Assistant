@@ -1,0 +1,10 @@
+DAG: daily_orders_pipeline
+Task: dbt_run_orders_models
+Execution Date: 2026-06-10 02:00:00
+Status: Failed
+
+Failure Summary:
+The dbt task failed because the fct_orders model referenced refund_amount, but the upstream staging model stg_orders did not include this column.
+
+Recommended Action:
+Check whether the refund_amount field was renamed or removed in the raw orders source. Update stg_orders or fct_orders accordingly.

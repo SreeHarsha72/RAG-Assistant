@@ -1,0 +1,14 @@
+Metric Definitions
+
+Gross Revenue:
+Total order value before discounts, refunds, or adjustments.
+
+Net Revenue:
+Gross revenue minus discounts and refunds. In the fct_orders model, this is calculated as:
+gross_revenue - discount_amount - refund_amount.
+
+Active Customer:
+A customer with at least one completed order in the last 30 days.
+
+Churned Customer:
+A customer whose last order was more than 60 days ago.

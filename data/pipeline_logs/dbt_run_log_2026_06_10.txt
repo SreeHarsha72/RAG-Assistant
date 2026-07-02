@@ -1,0 +1,9 @@
+2026-06-10 02:00:01 Starting dbt run for daily_orders_pipeline
+2026-06-10 02:01:14 Running model analytics.int_payments
+2026-06-10 02:01:59 Completed model analytics.int_payments
+2026-06-10 02:02:05 Running model analytics.fct_orders
+2026-06-10 02:02:47 ERROR in model fct_orders
+Database Error: column refund_amount does not exist in relation stg_orders
+2026-06-10 02:02:47 Failed model analytics.fct_orders
+2026-06-10 02:02:48 Skipping downstream model analytics.dim_customers because dependency fct_orders failed
+2026-06-10 02:02:49 dbt run finished with 1 error

@@ -1,0 +1,12 @@
+Confluence Notes: Orders Data Mart
+
+The orders data mart is used by Finance Analytics, Customer Analytics, and Growth Analytics.
+
+Important Models:
+- int_payments prepares payment-level information from Stripe.
+- fct_orders stores order-level financial metrics.
+- dim_customers stores customer-level lifetime metrics.
+
+The net_revenue field is owned by Finance Analytics.
+
+The daily_orders_pipeline feeds the executive revenue dashboard.

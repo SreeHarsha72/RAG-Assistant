@@ -1,0 +1,18 @@
+Data Platform SOP
+
+The daily_orders_pipeline runs every day at 2:00 AM UTC.
+
+Pipeline SLA:
+The orders data should be available in the warehouse by 5:00 AM UTC.
+
+Primary Owner:
+Analytics Engineering Team.
+
+Escalation:
+If the daily_orders_pipeline fails, check Airflow logs first, then dbt run logs, then upstream raw source schema changes.
+
+Common Failure Reasons:
+1. Upstream source schema changed.
+2. Required column was renamed or removed.
+3. dbt model dependency failed.
+4. Warehouse permission issue.
