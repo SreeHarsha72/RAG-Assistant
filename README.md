@@ -32,12 +32,12 @@ This project demonstrates a complete RAG implementation which includes:
 
 <img width="1917" height="520" alt="image" src="img/response.jpg" />
 
-**Response to question in context**
+### Response to question in context
 
 <img width="1917" height="520" alt="image" src="img/response.jpg" />
 <img width="1917" height="520" alt="image" src="img/response_contd.jpg" />
 
-**Response to question out of context**
+### Response to question out of context
 
 <img width="1917" height="520" alt="image" src="img/response2.jpg" />
 
