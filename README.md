@@ -16,30 +16,7 @@ This project demonstrates a complete RAG implementation which includes:
 - retrieve the most relevant context for a user question,
 - generate an answer using Llama 3,
 - show the exact source chunks used for the answer.
-
-```text
-Document Loading
-        ↓
-Chunking with Overlap
-        ↓
-Embeddings with Sentence Transformer 
-        ↓
-Vector Store in ChromaDB 
-        ↓
-User Question from Streamlit UI
-        ↓
-Question Embedding
-        ↓
-Top-K Semantic Retrieval
-        ↓
-Distance Threshold Check
-        ↓
-Prompt Construction with Retrieved Context
-        ↓
-Ollama + Llama 3 Answer Generation
-        ↓
-   Final Response 
-```
+                                            
 
 ## Tech Stack
 
@@ -128,63 +105,10 @@ This makes the answer explainable and traceable.
 Users can rebuild the vector database from the Streamlit UI when documents change.
 
 ## Streamlit UI
+<img width="1917" height="520" alt="image" src="https://github.com/user-attachments/assets/ddb33a42-0c01-4ce8-8023-7e48c68e2b1d" />
 
 image
 
 output images
 
 
-
-
-
-
-
-
-
-
-## Project Structure
-
-```text
-internal-data-rag-assistant/
-├── app.py
-├── requirements.txt
-├── README.md
-├── SAMPLE_QUESTIONS.md
-├── project-archi.txt
-├── project-flow.txt
-├── .env.example
-├── .gitignore
-│
-├── data/
-│   ├── dbt_models/
-│   │   ├── dim_customers.sql
-│   │   ├── fct_orders.sql
-│   │   └── int_payments.sql
-│   │
-│   ├── sql_queries/
-│   │   ├── churn_query.sql
-│   │   └── revenue_analysis.sql
-│   │
-│   ├── data_dictionaries/
-│   │   ├── customers_dictionary.csv
-│   │   └── orders_dictionary.csv
-│   │
-│   ├── pipeline_logs/
-│   │   ├── airflow_log_2026_06_10.txt
-│   │   └── dbt_run_log_2026_06_10.txt
-│   │
-│   └── docs/
-│       ├── confluence_notes.txt
-│       ├── data_platform_sop.txt
-│       └── metric_definitions.txt
-│
-└── src/
-    ├── __init__.py
-    ├── config.py
-    ├── ingest.py
-    ├── retrieve.py
-    ├── generate.py
-    └── utils.py
-
-
-This project is a complete local RAG implementation for internal data knowledge search. It combines document ingestion, chunking, embeddings, ChromaDB retrieval, no-answer thresholding, prompt construction, local Llama 3 generation, and source-grounded answer display inside a simple Streamlit UI.
