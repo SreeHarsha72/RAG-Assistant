@@ -29,7 +29,7 @@ This project demonstrates a complete RAG implementation which includes:
 
 
 ## User Interface
-<img width="1917" height="520" alt="image" src="img/UI.jpg" />
+![image]("img/UI.jpg")
 
 **Response to question in context**
 <img width="1917" height="520" alt="image" src="img/response.jpg" />
