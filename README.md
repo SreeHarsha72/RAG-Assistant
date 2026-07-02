@@ -117,5 +117,7 @@ This makes the answer explainable and traceable.
 
 Users can rebuild the vector database from the Streamlit UI when documents change.
 
+## Conclusion
 
+This project helped me understand how a complete RAG system works from end to end. I built a chatbot that can read internal data documents, search for the most relevant information using ChromaDB, and generate source-grounded answers using Llama 3 through Ollama. I also added features like re-indexing, similarity scores, and a no-answer threshold to make the answers more reliable. Overall, this project shows how RAG can be used to make internal data knowledge easier to access for teams.
 
