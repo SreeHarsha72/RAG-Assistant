@@ -1,4 +1,4 @@
-# Sample Questions and Expected Behavior
+# Sample Questions
 
 Used these questions to test the assistant
 
