@@ -42,6 +42,7 @@ Ollama + Llama 3 Answer Generation
 ```
 
 ## Tech Stack
+
 - **Knowledge Sources:** SQL, CSV, TXT, Markdown
 - **Programming:** Python, Pandas
 - **UI:** Streamlit
@@ -58,32 +59,20 @@ The project reads files from the `data/` folder. The knowledge base includes mul
 
 ### 2. Chunking
 
-Large documents are split into smaller overlapping chunks. Chunking helps the retriever find focused and relevant context instead of sending an entire document to the model.
+Large documents are split into smaller overlapping chunks. Chunking helps the retriever find focused and relevant context instead of sending an entire document to the model. The overlap helps preserve context between neighboring chunks.
 
-Default chunk settings:
-```text
-CHUNK_SIZE = 800
-CHUNK_OVERLAP = 150
-```
-
-The overlap helps preserve context between neighboring chunks.
+**Chunk settings:** CHUNK_SIZE = 800,  CHUNK_OVERLAP = 150
 
 
 ### 3. Embedding Generation
 
-Each chunk is converted into a numerical vector using Sentence Transformers.
+Each chunk is converted into a numerical vector using Sentence Transformers. These embeddings allow the system to compare the meaning of a user question with the meaning of each document chunk.
 
-Default embedding model:
-```text
-sentence-transformers/all-MiniLM-L6-v2
-```
-
-These embeddings allow the system to compare the meaning of a user question with the meaning of each document chunk.
-
+**Embedding model:** sentence-transformers/all-MiniLM-L6-v2
 
 ### 4. Vector Storage with ChromaDB
 
-The chunk embeddings and metadata are stored in ChromaDB.
+The chunk embeddings and metadata are stored in ChromaDB. The `chroma_db/` folder is generated locally after indexing.
 
 Each stored chunk contains metadata such as:
 - source file,
@@ -91,37 +80,24 @@ Each stored chunk contains metadata such as:
 - document type,
 - chunk ID.
 
-The `chroma_db/` folder is generated locally after indexing and should not be pushed to GitHub.
-
-
 ### 5. User Question Embedding
 
-When the user asks a question in the Streamlit UI, the question is also converted into an embedding using the same embedding model. The system then searches ChromaDB to find the most semantically similar chunks.
+The question user asks in Streamlit UI is also converted into an embedding using the same embedding model. The system then searches ChromaDB to find the most semantically similar chunks.
 
 
 ### 6. Top-K Retrieval
 
-The app retrieves the top matching chunks from ChromaDB. The user can control the number of chunks from the sidebar using:
+The app retrieves the top matching chunks from ChromaDB. The user can control the number of chunks to consider for the response from the sidebar in hte UI. A higher Top-K gives the LLM more context, but it can also introduce noise. A lower Top-K keeps the context focused, but it may miss supporting details.
 
-```text
-Top-K chunks to retrieve
-```
-
-A higher Top-K gives the LLM more context, but it can also introduce noise. A lower Top-K keeps the context focused, but it may miss supporting details.
-
-
-### 7. No-Answer Threshold
+### 7. Distance Threshold
 
 The app uses a distance threshold to reduce hallucination.
 
 In ChromaDB retrieval:
-```text
-Lower distance = better match
-Higher distance = weaker match
-```
+- Lower distance = better match
+- Higher distance = weaker match
 
-If the best retrieved chunk is above the allowed threshold, the app refuses to answer and returns a safe response instead of making up information.
-This makes the project stronger because it shows that the RAG system does not blindly answer every question.
+If the best retrieved chunk is above the allowed threshold, the app refuses to answer and returns a safe response instead of making up information. This makes the project stronger because it shows that the RAG system does not blindly answer every question.
 
 ### 8. Response Construction
 
@@ -133,15 +109,10 @@ After retrieval, the app builds a response prompt using:
 This step grounds the LLM response in the retrieved internal documents.
 
 
-### 9. Local LLM Generation with Ollama and Llama 3
+### 9. Final Response
+The final prompt is sent to a local Llama3 model through Ollama. This keeps the project local and avoids sending internal data to an external API.
 
-The final prompt is sent to a local Llama3 model through Ollama.
-This keeps the project local and avoids sending internal data to an external API.
-
-
-### 10. Source-Grounded Output
-
-After generation, the app displays:
+After repsonse generation, the app displays the following 
 - the final business answer,
 - retrieved source files,
 - document type,
@@ -152,46 +123,24 @@ After generation, the app displays:
 
 This makes the answer explainable and traceable.
 
+### 10. Re-Index Knowledge Base
 
+Users can rebuild the vector database from the Streamlit UI when documents change.
 
 ## Streamlit UI
 
 image
 
 output images
----
 
-## Key Features
 
-### Local RAG Assistant
 
-The project runs locally using Ollama and Llama 3, which makes it suitable for internal knowledge-base use cases.
 
-### Multi-Source Document Ingestion
 
-The system can ingest dbt models, SQL files, data dictionaries, pipeline logs, and internal documentation.
 
-### ChromaDB Vector Search
 
-ChromaDB stores document embeddings and performs semantic similarity search.
 
-### Similarity and Distance Scores
 
-The UI displays retrieval confidence so users can understand how strongly the retrieved chunks matched the question.
-
-### No-Answer Handling
-
-The assistant avoids hallucination by refusing to answer when retrieved context is weak.
-
-### Re-Index Knowledge Base
-
-Users can rebuild the vector database from the Streamlit UI when documents change.
-
-### Source Transparency
-
-The app shows exactly which chunks were used to generate the answer.
-
----
 
 ## Project Structure
 
@@ -237,14 +186,5 @@ internal-data-rag-assistant/
     ├── generate.py
     └── utils.py
 
-
-
-
-
-
-
-
-
-## Final Summary
 
 This project is a complete local RAG implementation for internal data knowledge search. It combines document ingestion, chunking, embeddings, ChromaDB retrieval, no-answer thresholding, prompt construction, local Llama 3 generation, and source-grounded answer display inside a simple Streamlit UI.
