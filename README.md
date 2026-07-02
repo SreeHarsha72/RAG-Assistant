@@ -51,7 +51,7 @@ Ollama + Llama 3 Answer Generation
 - **Vector Database:** ChromaDB
 
 
-## RAG Workflow
+## RAG Workflow Steps
 
 ### 1. Document Ingestion
 
